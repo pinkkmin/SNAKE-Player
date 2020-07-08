@@ -1,0 +1,37 @@
+# Project: 球员管理系统
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = 球员管理系统.o person.o date.o team.o
+LINKOBJ  = 球员管理系统.o person.o date.o team.o
+LIBS     = -L"C:/Dev-Cpp/MinGW64/lib32" -L"C:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32 -g3
+INCS     = -I"C:/Dev-Cpp/MinGW64/include" -I"C:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Dev-Cpp/MinGW64/include" -I"C:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = 球员管理系统.exe
+CXXFLAGS = $(CXXINCS) -m32 -g3
+CFLAGS   = $(INCS) -m32 -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+球员管理系统.o: 球员管理系统.cpp
+	$(CPP) -c 球员管理系统.cpp -o 球员管理系统.o $(CXXFLAGS)
+
+person.o: person.cpp
+	$(CPP) -c person.cpp -o person.o $(CXXFLAGS)
+
+date.o: date.cpp
+	$(CPP) -c date.cpp -o date.o $(CXXFLAGS)
+
+team.o: team.cpp
+	$(CPP) -c team.cpp -o team.o $(CXXFLAGS)
